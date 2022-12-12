@@ -22,7 +22,7 @@ module.exports = {
     },
     clean: true,
   },
-  watch: true,
+  // watch: true, // watch dev-server
   plugins: [
     new ESLintPlugin(),
   ],
