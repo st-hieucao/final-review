@@ -1,6 +1,27 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin')
+
+const webpack = require('webpack');
 const path = require('path');
+const dotenv = require('dotenv');
+
+const environment = process.env.NODE_ENV;
+const environmentObj = {
+  development: 'dev',
+  staging: 'stg',
+  production: 'prd',
+}
+const envDefault = `${path.join(__dirname)}/.env`;
+const envPath = `${envDefault}.${environmentObj[environment]}`;
+const envParsed = dotenv.config({
+  path: envPath
+}).parsed;
+
+const envKeys = Object.keys(envParsed).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(envParsed[next]);
+  return prev;
+}, {});
+// console.log({environment, envDefault, envPath, envParsed, envKeys})
 
 const routes = require('./src/routing/app.json');
 
@@ -25,6 +46,8 @@ module.exports = {
   // watch: true, // watch dev-server
   plugins: [
     new ESLintPlugin(),
+    new webpack.DefinePlugin(envKeys),
+    // new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("development") }),
   ],
   mode: 'development',
   devServer: {
@@ -103,6 +126,6 @@ routes.forEach((route) => {
   module.exports.plugins.push(new HtmlWebpackPlugin({
     template: `./src/pages/${route.page}.html`,
     filename: `${route.page}.html`,
-    inject: false,
+    inject: true,
   }))
 })
