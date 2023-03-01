@@ -5,7 +5,6 @@ name: Node.js CI
 
 on:
   push:
-    # - '*-prd-v*'
     tags:
       - '*-prd-v*'
     # branches: [ "main" ]
