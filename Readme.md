@@ -1,3 +1,6 @@
+- Learn CI CD
+- Learn Webpack
+
 Reference: https://viblo.asia/p/webpack-tu-a-den-a-webpack-la-gi-1VgZveNMKAw
 
 1. Resolve alias

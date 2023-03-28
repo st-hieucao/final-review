@@ -9,5 +9,3 @@
 // console.log(sum(1, 3), process.env.ENV); // eslint-disable-line
 // console.log(showName()) // eslint-disable-line
 // console.log(learnBabel()); // eslint-disable-line
-
-alert('Demo tag 3');
