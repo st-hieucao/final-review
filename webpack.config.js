@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 const webpack = require('webpack');
 const path = require('path');
@@ -10,7 +10,7 @@ const environmentObj = {
   development: 'dev',
   staging: 'stg',
   production: 'prd',
-}
+};
 const envDefault = `${path.join(__dirname)}/.env`;
 const envPath = `${envDefault}.${environmentObj[environment]}`;
 const envParsed = dotenv.config({
@@ -36,9 +36,9 @@ module.exports = {
     assetModuleFilename: (pathData) => {
       const filepath = path
         .dirname(pathData.filename)
-        .split("/")
+        .split('/')
         .slice(1)
-        .join("/");
+        .join('/');
       return `${filepath}/[name].[hash][ext][query]`;
     },
     clean: true,
@@ -47,7 +47,7 @@ module.exports = {
   plugins: [
     new ESLintPlugin(),
     new webpack.DefinePlugin(envKeys),
-    // new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("development") }),
+    // new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('development') }),
   ],
   mode: 'development',
   devServer: {
@@ -62,15 +62,15 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          "style-loader",
+          'style-loader',
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               sourceMap: true,
             },
           },
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
               sourceMap: true,
             },
@@ -119,7 +119,7 @@ module.exports = {
       '@shared': path.resolve(__dirname, './src/shared')
     },
   },
-}
+};
 
 // add muitiple file html
 routes.forEach((route) => {
@@ -127,5 +127,5 @@ routes.forEach((route) => {
     template: `./src/pages/${route.page}.html`,
     filename: `${route.page}.html`,
     inject: true,
-  }))
-})
+  }));
+});

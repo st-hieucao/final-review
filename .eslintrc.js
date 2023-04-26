@@ -15,8 +15,8 @@ module.exports = {
     'default-case': [1], // require default value in switch statement
     'default-case-last': [1], // require default value in the last of state ment
     eqeqeq: [1, 'always'], // use === instead ==
-    'no-multi-spaces': [1], 
-    'no-alert': [1], 
+    'no-multi-spaces': [1],
+    'no-alert': [1],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
@@ -50,7 +50,7 @@ module.exports = {
 
   // use import module es6
   parserOptions: {
-    "sourceType": "module",
+    "sourceType": 'module',
     "ecmaVersion": 2020
   }
-}
+};
