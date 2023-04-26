@@ -3,9 +3,9 @@ name: Node.js CI
 
 on:
   push:
-    tags:
-      - '*-prd-v*'
-    # branches: [ "main" ]
+    # tags:
+    #   - '*-prd-v*'
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
